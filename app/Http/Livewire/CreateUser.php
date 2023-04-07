@@ -9,6 +9,7 @@ use Livewire\Component;
 class CreateUser extends Component
 {
     public $user;
+    public $role_id;
     public $userId;
     public $action;
     public $button;
@@ -37,6 +38,7 @@ class CreateUser extends Component
 
         if ( !empty($password) ) {
             $this->user['password'] = Hash::make($password);
+            $this->user['role_id'] = 2;
         }
 
         User::create($this->user);

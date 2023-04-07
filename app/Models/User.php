@@ -24,9 +24,11 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
+        'role_id',
         'name',
         'email',
         'password',
+        'role_id'
     ];
 
     /**
@@ -67,5 +69,9 @@ class User extends Authenticatable
         return empty($query) ? static::query()
             : static::where('name', 'like', '%'.$query.'%')
                 ->orWhere('email', 'like', '%'.$query.'%');
+    }
+
+    public function role(){
+        return $this->hasOne(Role::class);
     }
 }
